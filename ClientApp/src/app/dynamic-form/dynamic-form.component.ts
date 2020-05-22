@@ -20,4 +20,5 @@ export class DynamicFormComponent implements OnInit {
     this.form = new FormGroup(formGroup);
   }
 
+  submitForm() { }
 }

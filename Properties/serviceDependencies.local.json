@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroup')]/providers/Microsoft.Sql/servers/awt-silxo/databases/awt",
+      "type": "mssql.azure",
+      "connectionId": "azureSQL",
+      "secretStore": "LocalSecretsFile"
+    }
+  }
+}
