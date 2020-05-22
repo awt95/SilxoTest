@@ -1,0 +1,24 @@
+<form [formGroup] ="form" (submit)="submitForm()">
+  <ng-template ngFor let-input [ngForOf]="formData">
+    <ng-container [ngSwitch]="input.controlType">
+
+      <ng-template [ngSwitchCase]="'text'">
+        <div class="form-group">
+          <label [for]="input.id">{{input.question}}</label>
+          <input [formControlName]="input.id" [type]="input.valueType" [name]="input.controlName" />
+        </div>
+      </ng-template>
+
+      <ng-template [ngSwitchCase]="'radio'">
+        <label [for]="input.id">{{input.question}}</label>
+        <div *ngFor="let option of input.options" class="radio">
+          <input [formControlName]="input.id" [type]="input.controlType" [name]="input.id" [value]="option.value">
+          <label [for]="input.id">{{option.name}}</label>
+        </div>
+      </ng-template>
+
+    </ng-container>
+  </ng-template>
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+{{form.value | json}}
