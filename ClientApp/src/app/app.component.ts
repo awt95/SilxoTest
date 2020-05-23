@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms'
-import { MockData } from './shared/data/mock-data'
+import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
@@ -8,5 +7,5 @@ import { MockData } from './shared/data/mock-data'
 })
 export class AppComponent {
   title = 'Silxo Assessment';
-  data = MockData;
+
 }
