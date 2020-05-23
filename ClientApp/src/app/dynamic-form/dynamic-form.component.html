@@ -1,5 +1,10 @@
-<form>
-  <div *ngFor="let question of questions">
-    <p>{{question.text}}</p>
-  </div>
-</form>
+<div *ngIf="formReady">
+  <form [formGroup]="assessmentForm">
+    <div *ngFor="let question of questions" class="form-group" [formGroup]="assessmentForm">
+      <label [for]="question.name">{{question.text}}</label>
+      <input type="text" [name]="question.name" [formControlName]="question.name" [id]="question.name" class="form-control" />
+    </div>
+  </form>
+  {{assessmentForm.value | json}}
+</div>
+
