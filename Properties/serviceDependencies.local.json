@@ -5,6 +5,14 @@
       "type": "mssql.azure",
       "connectionId": "azureSQL",
       "secretStore": "LocalSecretsFile"
+    },
+    "mssql2": {
+      "type": "mssql.local",
+      "connectionId": "DbContext"
+    },
+    "mssql3": {
+      "type": "mssql.local",
+      "connectionId": "QuestionContext"
     }
   }
 }
