@@ -56,7 +56,7 @@ export class DynamicFormComponent implements OnInit {
 
     // TODO: move to api service
     return this.http.post('/api/assessments', assessment)
-      .subscribe(data => {
+      .subscribe((data: Assessment) => {
         console.log(data.id);
         this.router.navigate(['/results/' + data.id])
       }

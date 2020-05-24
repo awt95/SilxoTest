@@ -1,11 +1,31 @@
 <div *ngIf="formReady">
   <form [formGroup]="assessmentForm" (ngSubmit)="submitForm(assessmentForm.value)">
     <div *ngFor="let question of questions" class="form-group" [formGroup]="assessmentForm">
-      <label [for]="question.name">{{question.text}}</label>
-      <input type="text" [name]="question.name" [formControlName]="question.name" [id]="question.name" class="form-control" />
+      <div [ngSwitch]="question.inputType">
+        <div *ngSwitchCase="'text'">
+          <label [for]="question.name">{{question.text}}</label>
+          <input type="text" [name]="question.name" [formControlName]="question.name" [id]="question.name" class="form-control" />
+        </div>
+        <div *ngSwitchCase="'number'">
+          <label [for]="question.name">{{question.text}}</label>
+          <input type="number" [name]="question.name" [formControlName]="question.name" [id]="question.name" class="form-control" />
+        </div>
+        <div *ngSwitchCase="'radio'" class="form-group">
+          <!-- TODO: Replace with values from database -->
+          <p>{{question.text}}</p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" [name]="question.name" [formControlName]="question.name" [id]="question.name" value="Yes" />
+            <label class="form-check-label" [for]="question.name">Yes</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" [name]="question.name" [formControlName]="question.name" [id]="question.name" value="No" />
+            <label class="form-check-label" [for]="question.name">No</label>
+          </div>
+        </div>
+      </div>
+
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
-  {{assessmentForm.value | json}}
 </div>
 

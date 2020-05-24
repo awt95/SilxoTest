@@ -3,5 +3,5 @@ export class Question {
   name: string;
   text: string;
   category: string;
-
+  options: string | null;
 }
