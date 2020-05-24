@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -29,7 +29,10 @@ namespace SilxoTest
             });
 
             services.AddDbContext<QuestionContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("QuestionContext")));
+                    options.UseSqlServer(Configuration.GetConnectionString("DbContext")));
+
+            services.AddDbContext<AssessmentContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DbContext")));
 
             services.AddCors(options =>
             {
@@ -38,6 +41,8 @@ namespace SilxoTest
                     .AllowAnyMethod()
                     .AllowAnyHeader());
             });
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

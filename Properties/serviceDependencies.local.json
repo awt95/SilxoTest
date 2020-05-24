@@ -13,6 +13,10 @@
     "mssql3": {
       "type": "mssql.local",
       "connectionId": "QuestionContext"
+    },
+    "mssql4": {
+      "type": "mssql.local",
+      "connectionId": "AssessmentContext"
     }
   }
 }

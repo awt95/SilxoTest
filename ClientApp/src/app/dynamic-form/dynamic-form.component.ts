@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http'
 import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms'
+import { Observable } from 'rxjs'
 import { ApiService } from './../api.service'
 import { Question } from './../question'
+import { Assessment } from './../assessment'
 
 @Component({
   selector: 'app-dynamic-form',
@@ -45,5 +47,16 @@ export class DynamicFormComponent implements OnInit {
 
   }
 
-  submitForm() { }
+  submitForm(form) {
+    console.log(form);
+    var assessment = new Assessment();
+    assessment.answers = JSON.stringify(form);
+    console.log(assessment);
+
+    // TODO: move to api service
+    return this.http.post('/api/assessments', assessment)
+      .subscribe(data =>
+        console.log(data)
+      );
+  }
 }

@@ -1,9 +1,10 @@
 <div *ngIf="formReady">
-  <form [formGroup]="assessmentForm">
+  <form [formGroup]="assessmentForm" (ngSubmit)="submitForm(assessmentForm.value)">
     <div *ngFor="let question of questions" class="form-group" [formGroup]="assessmentForm">
       <label [for]="question.name">{{question.text}}</label>
       <input type="text" [name]="question.name" [formControlName]="question.name" [id]="question.name" class="form-control" />
     </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
   {{assessmentForm.value | json}}
 </div>
