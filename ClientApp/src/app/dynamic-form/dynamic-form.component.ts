@@ -5,6 +5,7 @@ import { Observable } from 'rxjs'
 import { ApiService } from './../api.service'
 import { Question } from './../question'
 import { Assessment } from './../assessment'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-dynamic-form',
@@ -18,7 +19,7 @@ export class DynamicFormComponent implements OnInit {
   questionsURL = '/api/questions';
   questions: Question[];
 
-  constructor(private http: HttpClient, private apiService: ApiService, private fb: FormBuilder) {
+  constructor(private http: HttpClient, private apiService: ApiService, private fb: FormBuilder, private router: Router) {
   }
 
   ngOnInit() {
@@ -55,8 +56,10 @@ export class DynamicFormComponent implements OnInit {
 
     // TODO: move to api service
     return this.http.post('/api/assessments', assessment)
-      .subscribe(data =>
-        console.log(data)
-      );
+      .subscribe(data => {
+        console.log(data.id);
+        this.router.navigate(['/results/' + data.id])
+      }
+    );
   }
 }
