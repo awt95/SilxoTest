@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http'
-import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms'
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms'
 import { Observable } from 'rxjs'
 import { ApiService } from './../api.service'
 import { Question } from './../question'
@@ -38,7 +38,7 @@ export class DynamicFormComponent implements OnInit {
         // Build form
         let group: any = {};
         this.questions.forEach(question =>
-          group[question.name] = new FormControl('')
+          group[question.name] = new FormControl('', [Validators.required])
         );
         this.assessmentForm = new FormGroup(group);
         console.log(this.assessmentForm);
